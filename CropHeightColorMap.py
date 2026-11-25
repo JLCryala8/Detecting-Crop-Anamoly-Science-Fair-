@@ -48,7 +48,13 @@ while math.sqrt(len(new_list)).is_integer() == False:
     
 
 # Reshape the list into a square grid
-grid = np.array(new_list).reshape((int(math.sqrt(len(new_list))), int(math.sqrt(len(new_list)))))
+#grid = np.array(new_list).reshape((int(math.sqrt(len(new_list))), int(math.sqrt(len(new_list)))))
+# Reshape the list into a square grid
+side_length = int(math.sqrt(len(new_list)))
+grid = np.array(new_list).reshape((side_length, side_length))
+
+# Flip every odd-indexed row (2nd row, 4th row, etc.) right-to-left
+grid[1::2] = grid[1::2, ::-1]
 
 # Create a custom colormap (e.g., Red for low values -> Green for high values)
 low_color = 'red'
